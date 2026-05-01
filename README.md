@@ -67,18 +67,38 @@ The agent will activate the relevant skills automatically and return structured 
 
 ```
 proofwright/
-├── skills/                  # Core writing skills
-│   ├── argumentation/       # Logical structure & claim analysis
-│   ├── fact-checking/       # Verification & cross-referencing
-│   ├── scientific-review/   # Methodology & statistical reasoning
-│   ├── structural-editing/  # Organization & flow
-│   ├── style-clarity/       # Prose quality & audience adaptation
-│   ├── grant-review/        # Proposal-specific criteria
-│   └── references/          # Bibliography management
-├── templates/               # Starter templates for common formats
-├── docs/                    # Setup guides & documentation
-├── examples/                # Sample reviews & before/after drafts
-└── README.md
+├── CLAUDE.md                        # Project context for Claude Code
+├── .claude/
+│   └── skills/                      # Skills — invocable as /slash-commands in Claude Code
+│       ├── argumentation.md         # Logical structure & claim analysis
+│       ├── fact-check.md            # Verification & cross-referencing
+│       ├── scientific-review.md     # Methodology & statistical reasoning
+│       ├── structural-edit.md       # Organization & flow
+│       ├── style-clarity.md         # Prose quality & audience adaptation
+│       ├── grant-review.md          # FAPESP PIPE proposal review
+│       └── references.md            # Bibliography management
+├── templates/
+│   ├── grant-fapesp-pipe-fase1.md  # Full PIPE Fase 1 proposal template
+│   ├── grant-fapesp-pipe-fase2.md  # Full PIPE Fase 2 proposal template
+│   ├── scientific-article.md       # IMRaD structure for journal submissions
+│   ├── blog-post.md                # Technical blog post (Medium, Dev.to)
+│   └── technical-report.md         # Internal reports and white papers
+├── docs/
+│   ├── setup.md                    # Setup guide for Claude Code and other agents
+│   └── skills-guide.md             # When and how to use each skill
+├── evaluation/                      # Test cases with planted problems to validate skills
+│   ├── README.md
+│   ├── test-grant-review.md        # 8 planted issues across 5 PIPE dimensions
+│   ├── test-argumentation.md       # 6 logical fallacies and argument flaws
+│   ├── test-scientific-review.md   # 7 methodological problems
+│   └── test-style-clarity.md       # 6 prose issues
+├── examples/
+│   ├── blog-post-before-after/     # (placeholder)
+│   └── pipe-proposal-review/       # Before/after PIPE proposal with review notes
+│       ├── draft-original.md       # Weak draft with common PIPE mistakes
+│       ├── review-notes.md         # Output of /grant-review on the original
+│       └── draft-revised.md        # Revised version addressing all blocking issues
+└── real_projects/                   # Working drafts (gitignored)
 ```
 
 ## Philosophy
@@ -90,13 +110,16 @@ proofwright/
 
 ## Roadmap
 
-- [x] Core skill definitions
-- [ ] FAPESP PIPE review template
-- [ ] Scientific article review workflow
-- [ ] Medium blog post writing assistant
+- [x] Core skill definitions (7 skills)
+- [x] FAPESP PIPE review skill (full 7-dimension evaluation framework)
+- [x] FAPESP PIPE Fase 1 and Fase 2 proposal templates
+- [x] Scientific article, blog post, and technical report templates
+- [x] Skills guide (when and how to combine skills)
+- [x] CLAUDE.md (project context for Claude Code)
+- [x] Example: before/after PIPE proposal review (SensorGuard)
+- [x] Multi-language support (skills detect document language automatically)
+- [x] Evaluation suite (4 test files with planted problems and answer keys)
 - [ ] Integration with reference managers (Zotero, Mendeley)
-- [ ] Multi-language support (PT-BR / EN)
-- [ ] Evaluation suite for skill quality
 
 ## Contributing
 
