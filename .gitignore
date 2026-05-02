@@ -1,1 +1,8 @@
 real_projects/*
+
+# author_corpus: ignore personal files, keep structure and generated profile
+author_corpus/**/*.pdf
+author_corpus/**/*.html
+author_corpus/my-medium-KB/
+!author_corpus/README.md
+!author_corpus/style_profile.md
