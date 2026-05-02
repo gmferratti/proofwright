@@ -12,6 +12,7 @@ Skills live in `.claude/skills/`. Each is invocable as a slash command in Claude
 
 | Skill | File | Use when |
 |-------|------|----------|
+| `/pipe-review` | `pipe-review.md` | Full integrated review of a FAPESP PIPE proposal in the author's own voice |
 | `/grant-review` | `grant-review.md` | Reviewing a FAPESP PIPE proposal (Fase 1 or 2) |
 | `/argumentation` | `argumentation.md` | Auditing logical structure and claim support |
 | `/scientific-review` | `scientific-review.md` | Peer-review style evaluation of methods and results |

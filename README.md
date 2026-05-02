@@ -1,134 +1,200 @@
 # Proofwright
 
-**Where proof meets craft — an AI-augmented writing companion for technical and scientific authors.**
+**Onde rigor encontra ofício — um companheiro de escrita aumentado por IA para autores técnicos e científicos.**
 
-Proofwright is a personal, open writing framework that pairs your domain expertise with an AI agent to produce sharper arguments, cleaner prose, and more rigorous work. From Medium blog posts to FAPESP grant proposals, from technical books to peer-reviewed papers — Proofwright helps you write better, not instead of you.
+Proofwright é um framework pessoal de escrita que combina sua expertise de domínio com um agente de IA para produzir argumentos mais sólidos, prosa mais limpa e trabalhos mais rigorosos. De posts no Medium a propostas FAPESP PIPE, de artigos científicos a relatórios técnicos — Proofwright te ajuda a escrever melhor, não no seu lugar.
 
-> *"wright"* — an artisan who builds things by hand.
-> *"proof"* — both the rigor of science and the act of careful revision.
+> *"wright"* — artesão que constrói com as próprias mãos.
+> *"proof"* — tanto o rigor da ciência quanto o ato de revisar com cuidado.
 
 ---
 
-## Why Proofwright?
+## Por que Proofwright?
 
-Writing technical and scientific content is demanding. You need clarity of argument, factual accuracy, methodological soundness, and stylistic consistency — often across very different formats. Proofwright gives you a structured set of AI-powered skills to support each stage of the writing process, while keeping you in the driver's seat.
+Escrever conteúdo técnico e científico é exigente. Você precisa de clareza argumentativa, precisão factual, solidez metodológica e consistência estilística — frequentemente em formatos muito diferentes. Proofwright oferece um conjunto estruturado de skills movidas a IA para apoiar cada etapa do processo, mantendo você no comando.
 
-**This project is transparent by design.** Proofwright doesn't ghostwrite — it co-writes. Every contribution is visible, reviewable, and yours to accept or reject.
+**Este projeto é transparente por design.** Proofwright não escreve por você — escreve com você. Toda contribuição é visível, revisável e sua para aceitar ou rejeitar.
 
-## What it does
+---
 
-Proofwright provides reusable prompt instructions ("skills") organized around core writing activities:
+## O que faz
 
-- **Argumentation audit** — Checks logical structure, identifies weak claims, flags unsupported assertions, and suggests where evidence is needed.
-- **Fact-checking** — Cross-references claims against known literature and flags statements that need citation or verification.
-- **Scientific review** — Evaluates methodology descriptions, statistical reasoning, and adherence to disciplinary standards.
-- **Structural editing** — Analyzes document organization, flow, transitions, and section balance.
-- **Style & clarity** — Tightens prose, removes jargon where unnecessary, and adapts tone for the target audience (academic journal, technical blog, general public).
-- **Grant & proposal review** — Assesses alignment with funding body criteria (e.g., FAPESP PIPE: innovation, commercial viability, TRL, methodology).
-- **Reference companion** — Helps organize, format, and verify bibliographic references.
+Proofwright fornece instruções de prompt reutilizáveis ("skills") organizadas em torno das principais atividades de escrita:
 
-## Supported formats
+| Skill | Comando | Para quê |
+|-------|---------|----------|
+| Revisão PIPE integrada | `/pipe-review` | Revisão completa de proposta FAPESP PIPE na voz do próprio autor |
+| Revisão de proposta | `/grant-review` | Avaliação FAPESP PIPE (7 dimensões) — Fase 1 ou Fase 2 |
+| Auditoria de argumentação | `/argumentation` | Estrutura lógica, afirmações fracas, lacunas de evidência |
+| Revisão científica | `/scientific-review` | Metodologia, raciocínio estatístico, padrões disciplinares |
+| Edição estrutural | `/structural-edit` | Organização, fluxo, transições, equilíbrio entre seções |
+| Estilo e clareza | `/style-clarity` | Prosa, jargão, adequação ao público-alvo |
+| Verificação factual | `/fact-check` | Afirmações sem suporte, estatísticas sem fonte |
+| Referências | `/references` | Formatação e auditoria bibliográfica |
+| Perfil de estilo | `/extract-author-style` | Extrai fingerprint estilométrica do corpus do autor |
 
-| Format | Use case |
-|---|---|
-| Blog posts | Medium, Dev.to, personal sites |
-| Scientific articles | Journal submissions, preprints |
-| Technical books | Chapters, book proposals |
-| Grant proposals | FAPESP PIPE, CNPq, FINEP |
-| Technical reports | Internal docs, white papers |
+---
 
-## Getting started
+## Voz do autor
 
-### Prerequisites
+O diretório `author_corpus/` contém textos de referência escritos pelo autor (posts, tese, artigos). Eles são usados para extrair um perfil estilométrico.
 
-- A coding agent with custom instructions support (e.g., Claude Code, Cursor, or similar)
+**Configuração inicial (rode uma vez):**
+
+```
+/extract-author-style
+```
+
+Isso lê o corpus e gera `author_corpus/style_profile.md`. Revise e edite o perfil gerado — é um arquivo markdown simples.
+
+**Uso:** Adicione `--preserve-voice` a qualquer skill compatível para ativar revisão com consciência de voz:
+
+```
+/style-clarity --preserve-voice
+```
+
+Skills compatíveis: `/style-clarity`
+
+---
+
+## Fluxos recomendados por tipo de documento
+
+### Proposta FAPESP PIPE
+1. `/structural-edit` — corrija a arquitetura antes de avaliar o conteúdo
+2. `/grant-review` — aplique o framework de avaliação PIPE (7 dimensões)
+3. `/argumentation` — fortaleça os argumentos de inovação e mercado
+4. `/style-clarity` — aperte a prosa para a versão final
+
+### Artigo científico
+1. `/structural-edit` — equilíbrio entre seções, transições, conformidade IMRaD
+2. `/scientific-review` — metodologia, estatística, conclusões
+3. `/argumentation` — lógica da seção de discussão
+4. `/references` — completude e formatação das citações
+5. `/fact-check` — verifique afirmações com citações
+
+### Post técnico
+1. `/argumentation` — a tese central é sólida e bem suportada?
+2. `/style-clarity` — público: pares técnicos ou geral?
+3. `/fact-check` — sinalize estatísticas ou atribuições sem fonte
+
+---
+
+## Formatos suportados
+
+| Formato | Caso de uso |
+|---------|-------------|
+| Posts de blog | Medium, Dev.to, sites pessoais |
+| Artigos científicos | Submissões a journals, preprints |
+| Propostas de financiamento | FAPESP PIPE, CNPq, FINEP |
+| Relatórios técnicos | Documentação interna, white papers |
+
+---
+
+## Primeiros passos
+
+### Pré-requisitos
+
+- [Claude Code](https://claude.ai/code) (CLI ou extensão VSCode)
 - Git
+- Python ≥ 3.11 (para ferramentas auxiliares)
 
-### Installation
+### Instalação
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/proofwright.git
+git clone https://github.com/gmferratti/proofwright.git
 cd proofwright
 ```
 
-Then configure your agent to load the skills from the `skills/` directory. See [docs/setup.md](docs/setup.md) for platform-specific instructions.
+Se quiser usar as ferramentas Python:
 
-### Quick example
-
-Point Proofwright at any draft:
-
-```
-Review this draft for argumentative rigor and flag any claims that lack supporting evidence.
+```bash
+pip install uv
+uv sync
 ```
 
-The agent will activate the relevant skills automatically and return structured feedback with specific, actionable suggestions tied to exact passages in your text.
-
-## Project structure
-
-```
-proofwright/
-├── CLAUDE.md                        # Project context for Claude Code
-├── .claude/
-│   └── skills/                      # Skills — invocable as /slash-commands in Claude Code
-│       ├── argumentation.md         # Logical structure & claim analysis
-│       ├── fact-check.md            # Verification & cross-referencing
-│       ├── scientific-review.md     # Methodology & statistical reasoning
-│       ├── structural-edit.md       # Organization & flow
-│       ├── style-clarity.md         # Prose quality & audience adaptation
-│       ├── grant-review.md          # FAPESP PIPE proposal review
-│       └── references.md            # Bibliography management
-├── templates/
-│   ├── grant-fapesp-pipe-fase1.md  # Full PIPE Fase 1 proposal template
-│   ├── grant-fapesp-pipe-fase2.md  # Full PIPE Fase 2 proposal template
-│   ├── scientific-article.md       # IMRaD structure for journal submissions
-│   ├── blog-post.md                # Technical blog post (Medium, Dev.to)
-│   └── technical-report.md         # Internal reports and white papers
-├── docs/
-│   ├── setup.md                    # Setup guide for Claude Code and other agents
-│   └── skills-guide.md             # When and how to use each skill
-├── evaluation/                      # Test cases with planted problems to validate skills
-│   ├── README.md
-│   ├── test-grant-review.md        # 8 planted issues across 5 PIPE dimensions
-│   ├── test-argumentation.md       # 6 logical fallacies and argument flaws
-│   ├── test-scientific-review.md   # 7 methodological problems
-│   └── test-style-clarity.md       # 6 prose issues
-├── examples/
-│   ├── blog-post-before-after/     # (placeholder)
-│   └── pipe-proposal-review/       # Before/after PIPE proposal with review notes
-│       ├── draft-original.md       # Weak draft with common PIPE mistakes
-│       ├── review-notes.md         # Output of /grant-review on the original
-│       └── draft-revised.md        # Revised version addressing all blocking issues
-└── real_projects/                   # Working drafts (gitignored)
-```
-
-## Philosophy
-
-- **Your expertise, augmented** — Proofwright amplifies your knowledge; it doesn't replace it. You are the author.
-- **Transparent collaboration** — Every AI suggestion is explicit and traceable. No hidden rewrites.
-- **Proof as craft** — Rigorous revision is a skill, not a chore. Good writing deserves a good process.
-- **Format-agnostic** — The same principles of clear thinking and careful writing apply whether you're blogging or submitting to Nature.
-
-## Roadmap
-
-- [x] Core skill definitions (7 skills)
-- [x] FAPESP PIPE review skill (full 7-dimension evaluation framework)
-- [x] FAPESP PIPE Fase 1 and Fase 2 proposal templates
-- [x] Scientific article, blog post, and technical report templates
-- [x] Skills guide (when and how to combine skills)
-- [x] CLAUDE.md (project context for Claude Code)
-- [x] Example: before/after PIPE proposal review (SensorGuard)
-- [x] Multi-language support (skills detect document language automatically)
-- [x] Evaluation suite (4 test files with planted problems and answer keys)
-- [ ] Integration with reference managers (Zotero, Mendeley)
-
-## Contributing
-
-Proofwright is a personal project, but contributions are welcome. If you write in technical or scientific contexts and want to improve the skills or add new ones, open an issue or submit a PR.
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
+As skills ficam em `.claude/commands/` e são automaticamente reconhecidas pelo Claude Code como slash commands.
 
 ---
 
-*Built with craft and rigor by a human, with a little help from an AI wright.*
+## Estrutura do projeto
+
+```
+proofwright/
+├── CLAUDE.md                          # Contexto do projeto para o Claude Code
+├── LICENSE.md                         # Licença MIT
+├── pyproject.toml                     # Dependências Python
+├── .claude/
+│   └── commands/                      # Skills — invocáveis como /slash-commands
+│       ├── pipe-review.md             # Revisão PIPE integrada na voz do autor
+│       ├── grant-review.md            # Avaliação FAPESP PIPE (7 dimensões)
+│       ├── argumentation.md           # Estrutura lógica e análise de afirmações
+│       ├── scientific-review.md       # Metodologia e raciocínio estatístico
+│       ├── structural-edit.md         # Organização e fluxo
+│       ├── style-clarity.md           # Qualidade de prosa e adaptação de público
+│       ├── fact-check.md              # Verificação e cruzamento de referências
+│       ├── references.md              # Gestão bibliográfica
+│       └── extract-author-style.md    # Extração de perfil estilométrico
+├── author_corpus/                     # Textos de referência do autor
+│   ├── README.md
+│   ├── style_profile.md               # Perfil gerado por /extract-author-style
+│   ├── Tese_Doutorado.pdf
+│   ├── Texto_REDD.pdf
+│   ├── Analysis_of_the_Microtransaction_in_the.pdf
+│   └── my-medium-KB/                  # Export do Medium do autor
+├── templates/
+│   ├── grant-fapesp-pipe-fase1.md     # Template completo PIPE Fase 1
+│   ├── grant-fapesp-pipe-fase2.md     # Template completo PIPE Fase 2
+│   ├── scientific-article.md          # Estrutura IMRaD para journals
+│   ├── blog-post.md                   # Post técnico (Medium, Dev.to)
+│   └── technical-report.md            # Relatórios e white papers
+├── evaluation/                        # Casos de teste com problemas plantados
+│   ├── README.md
+│   ├── test-grant-review.md           # 8 problemas plantados em 5 dimensões PIPE
+│   ├── test-argumentation.md          # 6 falácias e falhas lógicas
+│   ├── test-scientific-review.md      # 7 problemas metodológicos
+│   └── test-style-clarity.md          # 6 problemas de prosa
+├── examples/
+│   ├── blog-post-before-after/        # (placeholder)
+│   └── pipe-proposal-review/          # Antes/depois de proposta PIPE com notas
+│       ├── draft-original.md          # Rascunho fraco com erros comuns
+│       ├── review-notes.md            # Output do /grant-review sobre o original
+│       └── draft-revised.md           # Versão revisada
+└── real_projects/                     # Rascunhos de trabalho (gitignored)
+```
+
+---
+
+## Filosofia
+
+- **Sua expertise, amplificada** — Proofwright amplifica seu conhecimento; não o substitui. Você é o autor.
+- **Colaboração transparente** — Toda sugestão da IA é explícita e rastreável. Sem reescritas ocultas.
+- **Rigor como ofício** — Revisão rigorosa é uma habilidade, não uma tarefa. Boa escrita merece um bom processo.
+- **Agnóstico ao formato** — Os mesmos princípios de pensamento claro e escrita cuidadosa se aplicam tanto a um post de blog quanto a uma submissão à Nature.
+
+---
+
+## Roadmap
+
+- [x] Definições de skills principais (9 skills)
+- [x] Skill `/pipe-review` — revisão PIPE integrada na voz do autor
+- [x] Skill `/grant-review` — framework de avaliação FAPESP PIPE (7 dimensões)
+- [x] Skill `/extract-author-style` — extração de perfil estilométrico do corpus
+- [x] Suporte a `--preserve-voice` no `/style-clarity`
+- [x] Templates FAPESP PIPE Fase 1 e Fase 2
+- [x] Templates de artigo científico, blog post e relatório técnico
+- [x] Corpus do autor (`author_corpus/`) com tese, artigos e posts do Medium
+- [x] Perfil de estilo gerado (`author_corpus/style_profile.md`)
+- [x] Suite de avaliação (4 arquivos de teste com problemas plantados)
+- [x] Exemplo: antes/depois de revisão de proposta PIPE
+- [ ] Integração com gerenciadores de referências (Zotero, Mendeley)
+- [ ] Integração com o Word
+
+---
+
+## Licença
+
+MIT — veja [LICENSE.md](LICENSE.md) para detalhes.
+
+---
+
+*Construído com ofício e rigor por um humano, com uma pequena ajuda de um wright de IA.*
