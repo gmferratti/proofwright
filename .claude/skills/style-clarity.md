@@ -8,6 +8,22 @@ Ask the author upfront if they haven't specified: **Who is the target audience?*
 
 ---
 
+## Voice mode: --preserve-voice
+
+If the user invokes this skill with the `--preserve-voice` flag:
+
+1. Check if `author_corpus/style_profile.md` exists. If it does not, tell the user: "No style profile found. Run `/extract-author-style` first to generate one." Then stop.
+2. Read `author_corpus/style_profile.md` in full before reviewing anything.
+3. Apply the **Review guidance** section from the profile throughout your assessment:
+   - Do not suggest changes that erase patterns flagged as **voice erasure**.
+   - Surface patterns flagged as **voice inconsistency** as observations, not as errors.
+   - Only actively recommend revising what is in the **Always acceptable to revise** list.
+4. Add a `[voice preserved]` or `[voice conflict]` tag to each suggested revision so the author can see which suggestions align with their natural style and which intentionally diverge from it.
+
+Without `--preserve-voice`, the skill runs in standard mode and makes no reference to the style profile.
+
+---
+
 ## What to assess
 
 ### Clarity
@@ -45,5 +61,6 @@ Work through the text section by section. For each problem:
 > *"original sentence"*
 > **Issue**: [clarity / precision / concision / register / jargon]
 > **Suggested revision**: [revised sentence]
+> *(In --preserve-voice mode, add `[voice preserved]` or `[voice conflict]` after the revision)*
 
 End with an overall prose assessment and the three highest-leverage changes to make.

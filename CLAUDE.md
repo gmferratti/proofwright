@@ -19,6 +19,23 @@ Skills live in `.claude/skills/`. Each is invocable as a slash command in Claude
 | `/style-clarity` | `style-clarity.md` | Improving prose clarity, precision, and register |
 | `/fact-check` | `fact-check.md` | Identifying unsupported or suspect claims |
 | `/references` | `references.md` | Formatting and auditing bibliography |
+| `/extract-author-style` | `extract-author-style.md` | Build a style profile from the author corpus |
+
+## Author voice
+
+The `author_corpus/` directory holds reference texts written by the author (blog posts, thesis, academic papers). These are used to extract a stylometric fingerprint.
+
+**Setup (run once):** `/extract-author-style` reads the corpus and generates `author_corpus/style_profile.md`. Review and edit the generated profile as needed — it's a plain markdown file.
+
+**Usage:** Add `--preserve-voice` to any compatible skill to activate voice-aware review:
+
+```
+/style-clarity --preserve-voice
+```
+
+Compatible skills: `/style-clarity`
+
+**Updating the profile:** Run `/extract-author-style` again to regenerate from scratch, or edit `author_corpus/style_profile.md` directly to tune specific observations.
 
 ## Recommended workflows by document type
 
