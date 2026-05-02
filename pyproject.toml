@@ -1,0 +1,8 @@
+[project]
+name = "proofwright"
+version = "0.1.0"
+description = "AI-augmented writing companion for technical and scientific authors"
+requires-python = ">=3.11"
+dependencies = [
+    "python-docx>=1.1.0",
+]
