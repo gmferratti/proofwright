@@ -23,6 +23,9 @@ Proofwright fornece instruções de prompt reutilizáveis ("skills") organizadas
 
 | Skill | Comando | Para quê |
 |-------|---------|----------|
+| Revisão de draft Medium | `/medium-draft` | Revisão estratégica de hook, estrutura, argumento e voz — sempre voice-aware |
+| Reescrita por rounds | `/medium-rewrite` | Reescreve um problema por vez, com log explícito de alterações |
+| Outline para Medium | `/medium-outline` | Estrutura um artigo a partir de um tema, tese ou ideia bruta |
 | Revisão PIPE integrada | `/pipe-review` | Revisão completa de proposta FAPESP PIPE na voz do próprio autor |
 | Revisão de proposta | `/grant-review` | Avaliação FAPESP PIPE (7 dimensões), Fase 1 ou Fase 2 |
 | Auditoria de argumentação | `/argumentation` | Estrutura lógica, afirmações fracas, lacunas de evidência |
@@ -53,7 +56,7 @@ Isso lê o corpus e gera `author_corpus/style_profile.md`. Revise e edite o perf
 /style-clarity --preserve-voice
 ```
 
-Skills compatíveis: `/style-clarity`
+Skills compatíveis: `/style-clarity`, `/medium-draft` (sempre voice-aware, sem necessidade de flag)
 
 ---
 
@@ -71,6 +74,13 @@ Skills compatíveis: `/style-clarity`
 3. `/argumentation`: lógica da seção de discussão
 4. `/references`: completude e formatação das citações
 5. `/fact-check`: verifique afirmações com citações
+
+### Artigo Medium
+1. `/medium-outline`: estruture a ideia antes de escrever (comece aqui se tem um tema, não um draft)
+2. `/medium-draft`: revisão estratégica do draft — hook, estrutura, argumento, voz
+3. `/medium-rewrite`: reescrita iterativa, um problema por round, com log explícito de alterações
+4. `/style-clarity --preserve-voice`: revisão de prosa linha a linha após a estrutura estar resolvida
+5. `/fact-check`: sinalize estatísticas, citações e atribuições sem fonte verificável
 
 ### Post técnico
 1. `/argumentation`: a tese central é sólida e bem suportada?
@@ -125,6 +135,9 @@ proofwright/
 ├── pyproject.toml                     # Dependências Python
 ├── .claude/
 │   └── commands/                      # Skills — invocáveis como /slash-commands
+│       ├── medium-draft.md            # Revisão estratégica de draft Medium (voice-aware)
+│       ├── medium-rewrite.md          # Reescrita por rounds com log de alterações
+│       ├── medium-outline.md          # Outline de artigo Medium a partir de tema/tese
 │       ├── pipe-review.md             # Revisão PIPE integrada na voz do autor
 │       ├── grant-review.md            # Avaliação FAPESP PIPE (7 dimensões)
 │       ├── argumentation.md           # Estrutura lógica e análise de afirmações
@@ -142,6 +155,7 @@ proofwright/
 │   ├── Analysis_of_the_Microtransaction_in_the.pdf
 │   └── my-medium-KB/                  # Export do Medium do autor
 ├── templates/
+│   ├── medium-article.md              # Template calibrado para artigos Medium (voz do autor)
 │   ├── grant-fapesp-pipe-fase1.md     # Template completo PIPE Fase 1
 │   ├── grant-fapesp-pipe-fase2.md     # Template completo PIPE Fase 2
 │   ├── scientific-article.md          # Estrutura IMRaD para journals
@@ -183,6 +197,8 @@ Três princípios que guiam o projeto:
 - [x] Skill `/grant-review`: framework de avaliação FAPESP PIPE (7 dimensões)
 - [x] Skill `/extract-author-style`: extração de perfil estilométrico do corpus
 - [x] Suporte a `--preserve-voice` no `/style-clarity`
+- [x] Skills Medium: `/medium-draft`, `/medium-rewrite`, `/medium-outline`
+- [x] Template `medium-article.md` calibrado para voz do autor
 - [x] Templates FAPESP PIPE Fase 1 e Fase 2
 - [x] Templates de artigo científico, blog post e relatório técnico
 - [x] Corpus do autor (`author_corpus/`) com tese, artigos e posts do Medium

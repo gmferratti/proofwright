@@ -2,7 +2,7 @@
 name: Author Style Profile
 description: Stylometric fingerprint extracted from the author's corpus — blog posts and doctoral thesis
 type: reference
-generated: 2026-05-02
+generated: 2026-05-03
 sources:
   - 2024-08-16_Harry-Potter-e-as-Figurinhas-da-Extors-o-00218ca939c8.html
   - 2025-03-13_Randomness---Life--Practical-Takeaways-from-The-Drunkard-s-Walk-7b472b404685.html
@@ -15,13 +15,14 @@ sources:
   - draft_Onboarding-T-cnico--Techwriting-os-seus-primeiros-dias-de-trabalho-45cccb23be13.html
   - 2026-02-07_Estrat-gias-para-Deploys-de-Modelos-de-IA-e-ML-1fa81484c898.html
   - Tese_Doutorado.pdf (pages 1-5)
+  - wip/new_article.md (State of Data Brazil 2026 — análise crítica)
 ---
 
 # Author Style Profile
 
 > This profile describes the author's natural writing voice as observed across their corpus.
 > Use it to preserve — not erase — distinctive stylistic choices during review.
-> Last generated: 2026-05-02
+> Last generated: 2026-05-03
 
 ---
 
@@ -141,6 +142,38 @@ The thesis introduction (pages 16–20) reveals the academic register in full. K
 
 - **Epigraph choice signals intellectual persona.** The thesis opens with a Frank Herbert (*Dune*) quote: *"Nas profundezas do inconsciente humano reside uma necessidade vaga por um universo lógico que faça sentido. Mas o universo real está sempre um passo à frente da lógica."* Selecting speculative fiction for a social science thesis is a deliberate statement of interdisciplinary identity — the same instinct that drives blog posts to open with Harry Potter or Magic: The Gathering.
 
+### Opening architecture — observed preference (from author revision of wip/new_article.md)
+
+When an AI-generated rewrite stripped institutional context from the opening in favor of a punchier hook, the author restored it. This reveals a specific structural preference for openings in the data analysis register:
+
+- **Institutional context is NOT decorative — it is a credibility anchor.** The author wants the source named and characterized ("autoproclamada maior comunidade...", "consultoria estratégica global presente em mais de 40 países") even in the opening paragraph. Removing it to tighten the hook is an overcorrection.
+- **The opening paragraph establishes the source; the second paragraph delivers the tension.** The author consistently separates "what this is" (paragraph 1) from "what it reveals" (paragraph 2). Do not collapse them.
+- **"Não muito diferente do que rolou nos últimos anos"** — the author uses this kind of casual continuity connector ("rolou", "nos últimos anos") to open the tension paragraph. It sets up a "same old story, but let me show you the details" register that is characteristic and should not be replaced with a more dramatic opener.
+- **Colloquial closing of a list with "continuou na mesma"** — instead of a formal summary or a numbered enumeration, the author closes the list of contradictions with a very colloquial "continuou na mesma." This deflation is intentional and should be protected.
+- **Anglicisms embedded without scare quotes in the body.** "remote-first", "trends" — used naturally, not italicized or quoted. The author switches to English terms when the Portuguese equivalent would sound more formal or imprecise.
+- **"bora lá mergulhar nesses números?"** — the author extends the "bora lá" formula with an action verb and object when transitioning into analytical content. This is a richer version of the formula than the bare "bora lá?" and should be preserved when present.
+- **"no dia de hoje"** — slightly emphatic temporal marker used to ground the reader contract in the present. Not redundant — deliberate.
+
+### Data analysis / critical opinion (new register — wip/new_article.md)
+
+The State of Data article reveals a third register not present in tutorial posts or the thesis: **data-driven critical analysis with an explicit personal stake**. Key features that differentiate this mode:
+
+- **The author shifts from "practitioner-teacher" to "informed insider with an opinion."** Phrases like "E aí, bora lá?" and "eu mesmo fui um caso de absorção por este mercado" position the author as someone who is both analyzing and being analyzed. The article is not tutorial (here's how to do X) nor academic (here's the literature on X) — it's a argued reading of evidence by someone living the phenomenon.
+
+- **Data is never cited without being interpreted.** Every statistic is immediately followed by a "o que isso significa" move: "Esse número, embora alto, é o menor desde 2021 — o mercado parece estar se estabilizando." The author refuses to be a passive reporter; every number gets a verdict.
+
+- **Sections open with a named tension, not just a topic.** Instead of "Remuneração" as a section header, the article uses moves like "O debate do trabalho remoto: uma tensão que não vai embora." The section title announces the argumentative angle, not just the subject matter.
+
+- **Personal anecdote is used to validate external data, not to replace it.** "Trazendo para a minha experiência pessoal (afinal, também fui respondente), eu mesmo fui um caso de absorção por este mercado..." The author deploys first-person testimony as a data point alongside institutional data — IBGE, Kaggle, Stack Overflow — creating a dual-track argument (macro evidence + micro witness).
+
+- **Comparative framing with global benchmarks is a deliberate structural choice.** The author consistently answers an implicit "mas o Brasil é fora da curva?" by comparing with equivalent international surveys. This move preempts the reader's counterargument and positions the author as genuinely informed.
+
+- **"O dado mais revelador" and similar superlative frames are a rhetorical signature in this mode.** "O dado mais revelador, porém, não é quem entrevistou — é quem está aberto a propostas sem nem estar procurando ativamente." These superlative setups signal that the author has ranked the evidence by importance, not just summarized it.
+
+- **The author names the systemic implication before the reader can dismiss the data as anomaly.** "Para as empresas, isso significa que a retenção não é um problema só de RH — é uma questão estratégica permanente." This preemptive generalization is characteristic of the author's critical analysis mode.
+
+- **"O que o relatório diz nas entrelinhas" is a recurring deep-reading move.** The author goes beyond the explicit findings to interpret the structural patterns behind the data — a habit rooted in critical discourse analysis training.
+
 ### What never changes (cross-register invariants)
 
 - The instinct to define terms before using them (glossary habit — present in both the thesis footnotes and blog inline definitions)
@@ -161,12 +194,17 @@ When `--preserve-voice` is active, apply these rules:
 **Flag as voice erasure (do not change):**
 - Removal of direct address forms: "bora!", "fechou?", "Vamos lá?", "Saudações, Pythonista!"
 - Removal of parenthetical jokes or fourth-wall breaks embedded in technical sentences
-- Replacing colloquial Brazilian terms ("textão", "nerdola", "Tabajara", "bora") with formal equivalents
+- Replacing colloquial Brazilian terms ("textão", "nerdola", "Tabajara", "bora", "rolou") with formal equivalents
 - Flattening the triple-adversative construction ("Contudo, entretanto, todavia") — it is intentional irony
 - Removing first-person confessions of difficulty or failure — these are structural, not accidental
 - Cutting forward-pointer closing sentences that tease the next episode
 - Changing "bora" to "vamos" or similar — the author consistently uses the contracted register
 - Removing image captions that deliver humor — these are part of the content architecture
+- Stripping institutional source characterization from opening paragraphs to "tighten the hook" — the author wants the source named and qualified even in the opening; credibility anchors are not decoration
+- Removing the author's casual continuity connectors ("Não muito diferente do que rolou nos últimos anos") — these set a deliberate "same story, different year" register
+- Replacing colloquial list-closers like "continuou na mesma" with formal summaries — the deflation is intentional
+- Removing embedded anglicisms used without scare quotes ("remote-first", "trends") — the author uses English terms when the Portuguese equivalent would sound more formal or imprecise
+- Simplifying "bora lá mergulhar nesses números?" to "bora lá?" — the extended formula with action verb is a richer, deliberate version
 
 **Flag as voice inconsistency (worth surfacing to author):**
 - Use of formal register markers ("ademais", "outrossim", "conforme supracitado") that never appear in the corpus
